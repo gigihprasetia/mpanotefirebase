@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "133845773358",
+    "project_id": "mpaanote",
+    "storage_bucket": "mpaanote.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133845773358:android:431c92404868e496a4c3bf",
+        "android_client_info": {
+          "package_name": "com.mpaanote"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133845773358-a183l7dn4g2oh101a0r51fnakpi4jh88.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mpaanote",
+            "certificate_hash": "f79ae3f7dee242674e1e2b56daa30ea12cc9e037"
+          }
+        },
+        {
+          "client_id": "133845773358-nfnroh5ntchp6500g1u4fckeh0h8jful.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSaNbycho-Owh_oIhAGeMXXnHiDQ8ivvY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133845773358-nfnroh5ntchp6500g1u4fckeh0h8jful.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
