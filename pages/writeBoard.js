@@ -1,5 +1,7 @@
 import React from 'react';
 import {useState, useCallback, useEffect} from 'react';
+import DatePicker from 'react-native-modern-datepicker';
+
 import {
   launchCamera,
   launchImageLibrary,
@@ -34,6 +36,7 @@ const WriteBoard = ({route, navigation}) => {
   const [dataRead, setDataRead] = useState();
   const [colorFont, setColorFont] = useState('black');
   const [visible, setVisible] = useState(false);
+  const [selectedDate, setSelectedDate] = useState('');
   const [noteInput, setNoteInput] = useState({
     title: '',
     statusNote: '',
@@ -116,7 +119,7 @@ const WriteBoard = ({route, navigation}) => {
         });
     }
   };
-  // console.log(noteInput);
+  console.log(selectedDate);
 
   const getCamera = async () => {
     const option = {
@@ -267,6 +270,7 @@ const WriteBoard = ({route, navigation}) => {
               }}>
               Title...
             </Text>
+            <DatePicker onSelectedChange={date => setSelectedDate(date)} />
             <TextInput
               style={{
                 paddingHorizontal: 10,

@@ -29,6 +29,7 @@ const Home = ({navigation}) => {
   const [isLoading, setIsLoading] = useState(true);
   const isFocused = useIsFocused();
   const [visible, setVisible] = useState(false);
+  const [idDelete, setIdDelete] = useState('');
   const [mod, setMod] = useState([]);
   useEffect(() => {
     setIsLoading(true);
@@ -96,7 +97,7 @@ const Home = ({navigation}) => {
                         justifyContent: 'center',
                       }}>
                       <Text style={{fontWeight: 'bold'}}>
-                        Dari Bege untuk Mpaa
+                        Dari Bege untuk Mpaas
                       </Text>
                     </View>
 
@@ -125,16 +126,16 @@ const Home = ({navigation}) => {
                         {haha.Text}
                       </Text>
                     </View>
-
                     <Dialog.Actions>
                       <Button onPress={() => setVisible(false)}>
                         <Text style={{color: 'red'}}>Engga</Text>
                       </Button>
                       <Button
                         onPress={async () => {
+                          // alert(idDelete);
                           await firestore()
                             .collection('NoteData')
-                            .doc(val.id)
+                            .doc(idDelete)
                             .delete()
                             .then(() => {
                               setRefresh(!refresh);
@@ -181,7 +182,12 @@ const Home = ({navigation}) => {
                       }}>
                       Title : {val.status}
                     </Text>
-                    <Text style={{color: 'white'}}>{val.title}</Text>
+                    <Text style={{color: 'white'}}>
+                      {val.title.length > 15
+                        ? val.title.slice(0, 15) + '...'
+                        : val.title}
+                    </Text>
+                    {/* <Text style={{color: 'white'}}>{val.id}</Text> */}
                   </View>
                   <View style={{marginRight: 10}}>
                     <Text style={{fontWeight: 'bold', color: 'white'}}>
@@ -201,21 +207,22 @@ const Home = ({navigation}) => {
                     display: 'flex',
                     justifyContent: 'space-between',
                   }}>
-                  <Text style={{textAlign: 'left', color: 'black'}}>
-                    {val.note.length > 120
-                      ? val.note.slice(0, 120) + '...'
-                      : val.note}
-                  </Text>
+                  <ScrollView scrollEnabled={true}>
+                    <Text style={{textAlign: 'left', color: 'black'}}>
+                      {/* {val.note.length > 120 */}
+                      {/* ? val.note.slice(0, 120) + '...' */}
+                      {val.note}
+                    </Text>
+                  </ScrollView>
 
                   <View
                     style={{
                       display: 'flex',
                       flexDirection: 'row',
-                      justifyContent:
-                        val.note.length > 120 ? 'space-between' : 'flex-end',
+                      justifyContent: 'flex-end',
                       alignItems: 'center',
                     }}>
-                    {val.note.length > 120 ? (
+                    {/* {val.note.length > 120 ? (
                       <Text
                         onPress={() =>
                           navigation.navigate('WriteBoard', {id: val.id})
@@ -227,9 +234,13 @@ const Home = ({navigation}) => {
                         }}>
                         lihat selengkapnya...
                       </Text>
-                    ) : null}
+                    ) : null} */}
                     <Icon
-                      onPress={() => setVisible(true)}
+                      onPress={() => {
+                        setVisible(true);
+
+                        setIdDelete(val.id);
+                      }}
                       name="remove-circle"
                       size={30}
                       color="#FB2576"></Icon>
